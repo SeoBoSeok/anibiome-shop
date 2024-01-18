@@ -1,10 +1,10 @@
 <?php
 include_once('./_common.php');
 
-// if (G5_IS_MOBILE) {
-//     include_once(G5_MSHOP_PATH.'/item.php');
-//     return;
-// }
+if (G5_IS_MOBILE) {
+    include_once(G5_MSHOP_PATH.'/item.php');
+    return;
+}
 
 $it_id = isset($_GET['it_id']) ? get_search_string(trim($_GET['it_id'])) : '';
 $it_seo_title = isset($it_seo_title) ? $it_seo_title : '';
@@ -77,7 +77,7 @@ if($it['it_skin']) {
         $skin_dir = G5_PATH.'/'.G5_SKIN_DIR.'/shop/'.$it['it_skin'];
 
     if(is_dir($skin_dir)) {
-        // $form_skin_file = $skin_dir.'/item.form.skin.php';
+        $form_skin_file = $skin_dir.'/item.form.skin.php';
 
         if(is_file($form_skin_file))
             $ca_dir_check = false;
@@ -92,7 +92,7 @@ if($ca_dir_check) {
             $skin_dir = G5_PATH.'/'.G5_SKIN_DIR.'/shop/'.$ca['ca_skin_dir'];
 
         if(is_dir($skin_dir)) {
-            // $form_skin_file = $skin_dir.'/item.form.skin.php';
+            $form_skin_file = $skin_dir.'/item.form.skin.php';
 
             if(!is_file($form_skin_file))
                 $skin_dir = G5_SHOP_SKIN_PATH;
@@ -110,19 +110,27 @@ $g5['title'] = $it['it_name'].' &gt; '.$it['ca_name'];
 if ($ca['ca_include_head'] && is_include_path_check($ca['ca_include_head']))
     @include_once($ca['ca_include_head']);
 else
-    // include_once(G5_SHOP_PATH.'/_head.php');
+    include_once(G5_SHOP_PATH.'/_head.php');
 
 // 분류 위치
 // HOME > 1단계 > 2단계 ... > 6단계 분류
 $ca_id = $it['ca_id'];
-// $nav_skin = $skin_dir.'/navigation.skin.php';
+$nav_skin = $skin_dir.'/navigation.skin.php';
 if(!is_file($nav_skin))
-    // $nav_skin = G5_SHOP_SKIN_PATH.'/navigation.skin.php';
+    $nav_skin = G5_SHOP_SKIN_PATH.'/navigation.skin.php';
 include $nav_skin;
 
-// if ($is_admin) {
-//     echo '<div class="sit_admin"><a href="'.G5_ADMIN_URL.'/shop_admin/itemform.php?w=u&amp;it_id='.$it_id.'" class="btn_admin btn" title="상품 관리"><span class="sound_only">상품 관리</span><i class="fa fa-cog fa-spin fa-fw"></i></a></div>';
-// }
+if(defined('G5_THEME_USE_ITEM_CATEGORY') && G5_THEME_USE_ITEM_CATEGORY){
+    // 이 분류에 속한 하위분류 출력
+    $cate_skin = $skin_dir.'/listcategory.skin.php';
+    if(!is_file($cate_skin))
+        $cate_skin = G5_SHOP_SKIN_PATH.'/listcategory.skin.php';
+    include $cate_skin;
+}
+
+if ($is_admin) {
+    echo '<div class="sit_admin"><a href="'.G5_ADMIN_URL.'/shop_admin/itemform.php?w=u&amp;it_id='.$it_id.'" class="btn_admin btn" title="상품 관리"><span class="sound_only">상품 관리</span><i class="fa fa-cog fa-spin fa-fw"></i></a></div>';
+}
 ?>
 
 <!-- 상품 상세보기 시작 { -->
@@ -242,8 +250,7 @@ function pg_anchor($anc_id) {
 }
 
 $naverpay_button_js = '';
-// include_once(G5_SHOP_PATH.'/settle_naverpay.inc.php');
-
+include_once(G5_SHOP_PATH.'/settle_naverpay.inc.php');
 ?>
 
 <?php if($is_orderable) { ?>
@@ -253,7 +260,16 @@ $naverpay_button_js = '';
 <div id="sit">
 
     <?php
-        include_once('../page/products.php');
+    // 상품 구입폼
+    include_once($skin_dir.'/item.form.skin.php');
+    ?>
+
+    <?php
+    // 상품 상세정보
+    $info_skin = $skin_dir.'/item.info.skin.php';
+    if(!is_file($info_skin))
+        $info_skin = G5_SHOP_SKIN_PATH.'/item.info.skin.php';
+    include $info_skin;
     ?>
 
 </div>
@@ -262,3 +278,9 @@ $naverpay_button_js = '';
 // 하단 HTML
 echo run_replace('shop_it_tail_html', conv_content($it['it_tail_html'], 1), $it);
 ?>
+
+<?php
+if ($ca['ca_include_tail'] && is_include_path_check($ca['ca_include_tail']))
+    @include_once($ca['ca_include_tail']);
+else
+    include_once(G5_SHOP_PATH.'/_tail.php');

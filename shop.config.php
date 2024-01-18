@@ -9,6 +9,9 @@ if (!defined('G5_USE_SHOP') || !G5_USE_SHOP) return;
 
 define('G5_SHOP_DIR', 'shop');
 
+$basic_path_array = g5_path_basic();
+define('G5_BASIC_SHOP_PATH',  $basic_path_array['path'].'/'.G5_SHOP_DIR);
+
 define('G5_SHOP_PATH',  G5_PATH.'/'.G5_SHOP_DIR);
 define('G5_SHOP_URL',   G5_URL.'/'.G5_SHOP_DIR);
 define('G5_MSHOP_PATH', G5_MOBILE_PATH.'/'.G5_SHOP_DIR);

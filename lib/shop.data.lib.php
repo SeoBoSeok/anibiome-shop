@@ -12,7 +12,7 @@ function get_shop_item($it_id, $is_cache=false, $add_query=''){
     if( !$item ){
         $sql = " select * from {$g5['g5_shop_item_table']} where it_id = '{$it_id}' $add_query ";
         $item = sql_fetch($sql);
-
+        
         $g5_object->set('shop', $it_id, $item, $add_query_key);
     }
     
