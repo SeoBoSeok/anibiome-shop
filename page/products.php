@@ -3,7 +3,20 @@ include_once('./_common.php');
 
 include_once(G5_THEME_PATH.'/head2.php');
 
+// add_stylesheet('css 구문', 출력순서); 숫자가 작을 수록 먼저 출력됨
+add_stylesheet('<link rel="stylesheet" href="'.G5_SHOP_CSS_URL.'/style.css">', 0);
+add_javascript('<script src="'.G5_JS_URL.'/jquery.bxslider.js"></script>', 10);
 ?>
+
+<?php if($config['cf_kakao_js_apikey']) { ?>
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js" async></script>
+<script>
+var kakao_javascript_apikey = "<?php echo $config['cf_kakao_js_apikey']; ?>";
+</script>
+<script src="<?php echo G5_JS_URL; ?>/kakaolink.js?ver=<?php echo G5_JS_VER; ?>"></script>
+<?php } ?>
+
+
 
 <div class="content_wrap">
     <section class="product_info box_width">
@@ -106,17 +119,28 @@ include_once(G5_THEME_PATH.'/head2.php');
                     </p>
                 </div>
             </div>
-            <div class="pro_buy">
-                <div class="btn_quantity">
-                    <button class="btn_minus" onclick="decreaseQuantity()">-</button>
-                    <span id="quantity">1</span>
-                    <button class="btn_plus" onclick="increaseQuantity()">+</button>
-                </div>
-                <div class="btn_buy">
-                    <a href="javascript:;">바로 구매</a>
-                </div>
-            </div>
-
+            <form name="fitem" action="<?php echo $action_url; ?>" method="post" onsubmit="return fitem_submit(this);">
+                <input type="hidden" name="it_id[]" value="<?php echo $it['it_id']; ?>">
+                <input type="hidden" name="sw_direct" value="1">
+                <input type="hidden" name="url">
+                <input type="hidden" name="io_type[<?php echo $it_id; ?>][]" value="0">
+                <input type="hidden" name="io_id[<?php echo $it_id; ?>][]" value="">
+                <input type="hidden" name="io_value[<?php echo $it_id; ?>][]" value="<?php echo $it['it_name']; ?>">
+                <input type="hidden" class="io_price" value="0">
+                <input type="hidden" class="io_stock" value="<?php echo $it['it_stock_qty']; ?>">
+                <input type="hidden" name="ct_qty[<?php echo $it_id; ?>][]" value="1" id="quantity2" class="num_input" size="5">
+                <input type="hidden" id="it_price" value="150000">
+                    <div class="pro_buy">
+                        <div class="btn_quantity">
+                            <button type="button" class="btn_minus" onclick="decreaseQuantity()">-</button>
+                            <span id="quantity">1</span>
+                            <button type="button" class="btn_plus" onclick="increaseQuantity()">+</button>
+                        </div>
+                        <div class="btn_buy">
+                            <a href="javascript:;" onclick="simulateButtonClick()">바로 구매</a>
+                        </div>
+                    </div>
+            </form>
         </div>
 
     </section>
@@ -686,6 +710,8 @@ include_once(G5_THEME_PATH.'/head2.php');
     // 수량 업데이트 함수
     function updateQuantity() {
         document.getElementById('quantity').innerText = quantity;
+        document.getElementById('quantity2').value = quantity;
+        document.getElementById('it_price').value = quantity * 150000;
     }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
@@ -750,6 +776,16 @@ include_once(G5_THEME_PATH.'/head2.php');
     }
 </script>
 <!-- 제품 슬라이드 -->
+
+<script>
+function simulateButtonClick() {
+    // 필요한 값 설정
+    document.pressed = '바로구매';
+
+    // 폼 제출
+    document.fitem.submit();
+}
+</script>
 
 <?php include_once(G5_THEME_PATH.'/footer.php'); ?>
 <?php
