@@ -8,12 +8,14 @@ add_stylesheet('<link rel="stylesheet" href="'.G5_SHOP_CSS_URL.'/style.css">', 0
 add_javascript('<script src="'.G5_JS_URL.'/jquery.bxslider.js"></script>', 10);
 ?>
 
+
 <?php if($config['cf_kakao_js_apikey']) { ?>
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js" async></script>
 <script>
 var kakao_javascript_apikey = "<?php echo $config['cf_kakao_js_apikey']; ?>";
 </script>
 <script src="<?php echo G5_JS_URL; ?>/kakaolink.js?ver=<?php echo G5_JS_VER; ?>"></script>
+
 <?php } ?>
 
 
@@ -21,7 +23,54 @@ var kakao_javascript_apikey = "<?php echo $config['cf_kakao_js_apikey']; ?>";
 <div class="content_wrap">
     <section class="product_info box_width">
         <div class="product_slide">
+            <?php
+                // 이미지 셋팅
+                $big_img_count = 0;
+                $thumbnails = array();
+                for($i=1; $i<=10; $i++) {
+                    if(!$it['it_img'.$i])
+                        continue;
+        
+                    $img = get_it_thumbnail($it['it_img'.$i], $default['de_mimg_width'], $default['de_mimg_height']);
+                    
+                    if($img) {
+                        // 썸네일
+                        $thumb = get_it_thumbnail($it['it_img'.$i], 70, 70);
+                        $thumbnails[] = $thumb;
+                        $big_img_count++;
+                    }
+                }
+            ?>
+
             <div thumbsSlider="" class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                <?php
+                $big_img_count = 0;
+                $thumbnails = array();
+                for($i=1; $i<=10; $i++) {
+                    if(!$it['it_img'.$i])
+                        continue;
+        
+                    $img = get_it_thumbnail($it['it_img'.$i], $default['de_mimg_width'], $default['de_mimg_height']);
+        
+                    if($img) {
+                        // 썸네일
+                        $thumb = get_it_thumbnail($it['it_img'.$i], 70, 70);
+                        $thumbnails[] = $thumb;
+                        $big_img_count++;
+                        echo '<div class="swiper-slide">';
+                        echo $img;
+                        echo '</div>';
+                    }
+                }
+        
+                // if($big_img_count == 0) {
+                //     echo '<img src="'.G5_SHOP_URL.'/img/no_image.gif" alt="">';
+                // }
+                ?>
+                </div> 
+
+                <!--                 
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <img src="/<?php echo G5_THEME_DIR.'/basic_anibiom/'; ?>images/product_slide_img.jpg" />
@@ -29,13 +78,35 @@ var kakao_javascript_apikey = "<?php echo $config['cf_kakao_js_apikey']; ?>";
                     <div class="swiper-slide">
                         <img src="/<?php echo G5_THEME_DIR.'/basic_anibiom/'; ?>images/product_slide_img2.jpg" />
                     </div>
-                    <div class="swiper-slide">
-                        <img src="/<?php echo G5_THEME_DIR.'/basic_anibiom/'; ?>images/product_slide_img3.jpg" />
-                    </div>
-                </div>
+                </div> 
+                -->
             </div>
             <div class="swiper mySwiper2">
                 <div class="swiper-wrapper">
+                <?php
+                    $big_img_count = 0;
+                    $thumbnails = array();
+                    for($i=1; $i<=10; $i++) {
+                        if(!$it['it_img'.$i])
+                            continue;
+            
+                        $img = get_it_thumbnail($it['it_img'.$i], $default['de_mimg_width'], $default['de_mimg_height']);
+                        
+                        if($img) {
+                            // 썸네일
+                            $thumb = get_it_thumbnail($it['it_img'.$i], 70, 70);
+                            $thumbnails[] = $thumb;
+                            $big_img_count++;
+                            echo '<div class="swiper-slide">';
+                            echo $img;
+                            echo '</div>';
+                        }
+                    }
+                ?>
+                </div>
+
+                <!-- 
+                <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <img src="/<?php echo G5_THEME_DIR.'/basic_anibiom/'; ?>images/product_slide_img.jpg" />
                     </div>
@@ -44,20 +115,19 @@ var kakao_javascript_apikey = "<?php echo $config['cf_kakao_js_apikey']; ?>";
                     </div>
                     <div class="swiper-slide">
                         <img src="/<?php echo G5_THEME_DIR.'/basic_anibiom/'; ?>images/product_slide_img3.jpg" />
-                    </div>
-
-                </div>
-
+                    </div> 
+                </div> 
+                -->
             </div>
 
 
         </div>
         <div class="right_group">
             <p class="category">
-                강아지 건강 보조제
+            <?php echo $it['ca_name']; ?>
             </p>
             <div class="pro_name_box">
-                <h3 class="pro_name">Gut & Skin Recovery</h3>
+                <h3 class="pro_name"><?php echo $it['it_name']; ?></h3>
                 <div class="btn_cart">
                     <button type="button">
                         <img src="/<?php echo G5_THEME_DIR.'/basic_anibiom/'; ?>images/ico_cart_gray.svg" alt="">
@@ -79,15 +149,16 @@ var kakao_javascript_apikey = "<?php echo $config['cf_kakao_js_apikey']; ?>";
                         <em>14</em>%
                     </span>
                     <span class="price_s">
-                        <em>250,000</em>원
+                        <em><?php echo number_format($it['it_cust_price']); ?></em>원
                     </span>
                 </p>
                 <p class="price">
-                    <span>150,000</span>원
+                    <span><?php echo number_format($it['it_price']); ?></span>원
                 </p>
             </div>
             <div class="pro_txt">
-                <ul>
+                <?php echo $it['it_explan']; ?>
+                <!-- <ul>
                     <li>
 
                         장&피부 면역기증 회복 및 증진에 도움을 줌
@@ -96,7 +167,7 @@ var kakao_javascript_apikey = "<?php echo $config['cf_kakao_js_apikey']; ?>";
                     <li>
                         60 캡슐 (250mg/Caps.)
                     </li>
-                </ul>
+                </ul> -->
             </div>
             <div class="pro_last">
                 <div class="sub_box">
@@ -675,6 +746,29 @@ var kakao_javascript_apikey = "<?php echo $config['cf_kakao_js_apikey']; ?>";
 </div>
 <!-- 탭메뉴 -->
 <script>
+    $(function(){
+        // 상품이미지 첫번째 링크
+        $("#sit_pvi_big a:first").addClass("visible");
+
+        // 상품이미지 미리보기 (썸네일에 마우스 오버시)
+        $("#sit_pvi .img_thumb").bind("mouseover focus", function(){
+            var idx = $("#sit_pvi .img_thumb").index($(this));
+            $("#sit_pvi_big a.visible").removeClass("visible");
+            $("#sit_pvi_big a:eq("+idx+")").addClass("visible");
+        });
+
+        // 상품이미지 크게보기
+        $(".popup_item_image").click(function() {
+            var url = $(this).attr("href");
+            var top = 10;
+            var left = 10;
+            var opt = 'scrollbars=yes,top='+top+',left='+left;
+            popup_window(url, "largeimage", opt);
+
+            return false;
+        });
+    });
+
     $(".wrap").addClass("shop");
     
     $(".product_tab li ").click(function () {

@@ -1,6 +1,34 @@
 <?php
 include_once('./_common.php');
 
+$ca_id = isset($_REQUEST['ca_id']) ? safe_replace_regex($_REQUEST['ca_id'], 'ca_id') : '';
+$items = [];
+
+if ($ca_id) {   // 분류 선택시
+    $sql = " select * from {$g5['g5_shop_category_table']} where ca_id = '$ca_id' and ca_use = '1'  ";
+    $ca = sql_fetch($sql);
+    if (! (isset($ca['ca_id']) && $ca['ca_id'])) {
+        alert('등록된 분류가 없습니다.');
+    }
+    
+    $i=0;
+    $row2 = sql_query(" select * from {$g5['g5_shop_item_table']} where ca_id like '{$ca_id}%' and it_use = '1'  ");
+    while ($row = sql_fetch_array($row2)) {
+        $items[$i] = $row;
+        ++$i;
+    }
+} else {
+    $i=0;
+    $sql = " select * from {$g5['g5_shop_item_table']} where it_use = '1' order by it_id ";
+    $row2 = sql_query($sql);
+    while ($row = sql_fetch_array($row2)) {
+        $items[$i] = $row;
+        ++$i;
+    }
+    
+}
+
+
 include_once(G5_THEME_PATH.'/head_guide.php');
 
 ?>
@@ -10,32 +38,35 @@ include_once(G5_THEME_PATH.'/head_guide.php');
 			<div class="box_width">
 				<h3 class="sc_tit">Shop</h3>
 				<div class="tap_text m_none_tab_on">
-					<a href="#" class="active">All products</a>
-					<a href="#">FMT products</a>
-					<a href="#">고양이  제품</a>
-					<a href="#">강아지 제품</a>
-					<a href="#">진단키트</a>
-					<a href="#">스타터 팩</a>
-					<a href="#">테스트 키트</a>
-					<a href="#">신제품</a>
+                    <a href="/page/shop_productlist.php" class="<?php echo $ca_id? "" : "active"; ?>">All products</a>
+                    <?php
+                        $sql = " select ca_id, ca_name from {$g5['g5_shop_category_table']} where ca_use = '1' order by ca_order, ca_id ";
+                        $result = sql_query($sql);
+                        while ($row=sql_fetch_array($result)) {
+                    ?>
+					<a href="/page/shop_productlist.php?ca_id=<?php echo $row['ca_id']; ?>" class="<?php echo $ca_id == $row['ca_id']? "active" : ""; ?>"><?php echo $row['ca_name']; ?></a>
+                    <?php } ?>
 				</div>
 				<div class="selectbox_group pc_tab_none">
 					<select class="selectbox">
-						<option selected>All products</option>
-						<option>FMT products</option>
-						<option>고양이  제품</option>
-						<option>강아지 제품</option>
-						<option>진단키트</option>
-						<option>스타터 팩</option>
-						<option>테스트 키트</option>
-						<option>신제품</option>
+						<option <?php echo $ca_id? "" : "selected"; ?>>All products</option>
+                        <?php
+                            $sql = " select ca_id, ca_name from {$g5['g5_shop_category_table']} where ca_use = '1' order by ca_order, ca_id ";
+                            $result = sql_query($sql);
+                            while ($row=sql_fetch_array($result)) {
+                        ?>
+                        <option <?php echo $ca_id == $row['ca_id']? "selected" : ""; ?>><?php echo $row['ca_name']; ?></option>
+                        <?php } ?>
 					</select>
 				</div>
 			</div>
 		</section>
 		<section class="product_list">
 			<ul class="box_width item_list_wrap"> 
-				<li class="login_on"> <!--로그인시, class="login_on"추가--->
+
+                <!-- 로그인시, class="login_on"추가 -->
+                <!--
+				<li class="login_on"> 
 					<a href="">
 						<div class="img">
 							<img src="">
@@ -61,242 +92,28 @@ include_once(G5_THEME_PATH.'/head_guide.php');
 						</div>
 					</a>
 				</li>
-				<li>
-					<a href="">
-						<div class="img">
-							<img src="">
-						</div>
+                -->
+                <?php foreach ($items as $item) { ?>
+                <?php
+                    $thumb = get_it_thumbnail2($item['it_img1'], 100, 100);
+                ?>
+
+                <li class="<?php echo $member['mb_no']? "login_on" : ""; ?>">
+                    <a href="/shop/item.php?it_id=<?php echo $item['it_id']; ?>">
+						<!-- <div class="img"> -->
+                            <img src="<?php echo $thumb; ?>">
+						<!-- </div> -->
 						<div class="info">
-							<span class="category">animalbiome 수의학</span>
-							<p class="tit">장 건강 테스트</p>
-							<div class="price">35,000원</div>
+							<span class="category"><?php echo $item['it_name']; ?></span> <!-- 상품명 -->
+							<p class="tit"><?php echo $item['it_basic']; ?></p> <!-- 기본설명 -->
+							<div class="price"><?php echo number_format($item['it_price']); ?>원</div>
 							<button>가격을 보려면 로그인 또는 등록<i></i></button>
 						</div>
 					</a>
 				</li>
-				<li>
-					<a href="">
-						<div class="img">
-							<img src="">
-						</div>
-						<div class="info">
-							<span class="category">animalbiome 수의학</span>
-							<p class="tit">개를 위한 구강 건강 테스트</p>
-							<div class="price">35,000원</div>
-							<button>가격을 보려면 로그인 또는 등록<i></i></button>
-						</div>
-					</a>
-				</li>
-				<li>
-					<a href="">
-						<div class="img">
-							<img src="">
-						</div>
-						<div class="info">
-							<span class="category">animalbiome 수의학</span>
-							<p class="tit">개를 위한 장 건강 테스트</p>
-							<div class="price">35,000원</div>
-							<button>가격을 보려면 로그인 또는 등록<i></i></button>
-						</div>
-					</a>
-				</li>
-				<li>
-					<a href="">
-						<div class="img">
-							<img src="">
-						</div>
-						<div class="info">
-							<span class="category">animalbiome 수의학</span>
-							<p class="tit">개를 위한 GI 릴리프 키트</p>
-							<div class="price">35,000원</div>
-							<button>가격을 보려면 로그인 또는 등록<i></i></button>
-						</div>
-					</a>
-				</li>
-				<li>
-					<a href="">
-						<div class="img">
-							<img src="">
-						</div>
-						<div class="info">
-							<span class="category">animalbiome 수의학</span>
-							<p class="tit">장 건강 테스트</p>
-							<div class="price">35,000원</div>
-							<button>가격을 보려면 로그인 또는 등록<i></i></button>
-						</div>
-					</a>
-				</li>
-				<li>
-					<a href="">
-						<div class="img">
-							<img src="">
-						</div>
-						<div class="info">
-							<span class="category">animalbiome 수의학</span>
-							<p class="tit">개를 위한 구강 건강 테스트</p>
-							<div class="price">35,000원</div>
-							<button>가격을 보려면 로그인 또는 등록<i></i></button>
-						</div>
-					</a>
-				</li>
-				<li>
-					<a href="">
-						<div class="img">
-							<img src="">
-						</div>
-						<div class="info">
-							<span class="category">animalbiome 수의학</span>
-							<p class="tit">개를 위한 장 건강 테스트</p>
-							<div class="price">35,000원</div>
-							<button>가격을 보려면 로그인 또는 등록<i></i></button>
-						</div>
-					</a>
-				</li>
-				<li>
-					<a href="">
-						<div class="img">
-							<img src="">
-						</div>
-						<div class="info">
-							<span class="category">animalbiome 수의학</span>
-							<p class="tit">개를 위한 GI 릴리프 키트</p>
-							<div class="price">35,000원</div>
-							<button>가격을 보려면 로그인 또는 등록<i></i></button>
-						</div>
-					</a>
-				</li>
-				<li>
-					<a href="">
-						<div class="img">
-							<img src="">
-						</div>
-						<div class="info">
-							<span class="category">animalbiome 수의학</span>
-							<p class="tit">장 건강 테스트</p>
-							<div class="price">35,000원</div>
-							<button>가격을 보려면 로그인 또는 등록<i></i></button>
-						</div>
-					</a>
-				</li>
-				<li>
-					<a href="">
-						<div class="img">
-							<img src="">
-						</div>
-						<div class="info">
-							<span class="category">animalbiome 수의학</span>
-							<p class="tit">개를 위한 구강 건강 테스트</p>
-							<div class="price">35,000원</div>
-							<button>가격을 보려면 로그인 또는 등록<i></i></button>
-						</div>
-					</a>
-				</li>
-				<li>
-					<a href="">
-						<div class="img">
-							<img src="">
-						</div>
-						<div class="info">
-							<span class="category">animalbiome 수의학</span>
-							<p class="tit">개를 위한 장 건강 테스트</p>
-							<div class="price">35,000원</div>
-							<button>가격을 보려면 로그인 또는 등록<i></i></button>
-						</div>
-					</a>
-				</li>
-				<li>
-					<a href="">
-						<div class="img">
-							<img src="">
-						</div>
-						<div class="info">
-							<span class="category">animalbiome 수의학</span>
-							<p class="tit">개를 위한 GI 릴리프 키트</p>
-							<div class="price">35,000원</div>
-							<button>가격을 보려면 로그인 또는 등록<i></i></button>
-						</div>
-					</a>
-				</li>
-				<li>
-					<a href="">
-						<div class="img">
-							<img src="">
-						</div>
-						<div class="info">
-							<span class="category">animalbiome 수의학</span>
-							<p class="tit">개를 위한 GI 릴리프 키트</p>
-							<div class="price">35,000원</div>
-							<button>가격을 보려면 로그인 또는 등록<i></i></button>
-						</div>
-					</a>
-				</li>
-				<li>
-					<a href="">
-						<div class="img">
-							<img src="">
-						</div>
-						<div class="info">
-							<span class="category">animalbiome 수의학</span>
-							<p class="tit">장 건강 테스트</p>
-							<div class="price">35,000원</div>
-							<button>가격을 보려면 로그인 또는 등록<i></i></button>
-						</div>
-					</a>
-				</li>
-				<li>
-					<a href="">
-						<div class="img">
-							<img src="">
-						</div>
-						<div class="info">
-							<span class="category">animalbiome 수의학</span>
-							<p class="tit">개를 위한 구강 건강 테스트</p>
-							<div class="price">35,000원</div>
-							<button>가격을 보려면 로그인 또는 등록<i></i></button>
-						</div>
-					</a>
-				</li>
-				<li>
-					<a href="">
-						<div class="img">
-							<img src="">
-						</div>
-						<div class="info">
-							<span class="category">animalbiome 수의학</span>
-							<p class="tit">개를 위한 장 건강 테스트</p>
-							<div class="price">35,000원</div>
-							<button>가격을 보려면 로그인 또는 등록<i></i></button>
-						</div>
-					</a>
-				</li>
-				<li>
-					<a href="">
-						<div class="img">
-							<img src="">
-						</div>
-						<div class="info">
-							<span class="category">animalbiome 수의학</span>
-							<p class="tit">개를 위한 GI 릴리프 키트</p>
-							<div class="price">35,000원</div>
-							<button>가격을 보려면 로그인 또는 등록<i></i></button>
-						</div>
-					</a>
-				</li>
-				<li>
-					<a href="">
-						<div class="img">
-							<img src="">
-						</div>
-						<div class="info">
-							<span class="category">animalbiome 수의학</span>
-							<p class="tit">장 건강 테스트</p>
-							<div class="price">35,000원</div>
-							<button>가격을 보려면 로그인 또는 등록<i></i></button>
-						</div>
-					</a>
-				</li>
+                <?php } ?>
 			</ul>
-			<div class="pagination">
+			<!-- <div class="pagination">
 			  <a href="#" class="prev">prev</a>
 			  <a href="#">1</a>
 			  <a class="active" href="#">2</a>
@@ -304,7 +121,7 @@ include_once(G5_THEME_PATH.'/head_guide.php');
 			  <a href="#">4</a>
 			  <a href="#">5</a>
 			  <a href="#" class="next">next</a>
-			</div>
+			</div> -->
 		</section>
 	</div>
 	<footer>
@@ -379,7 +196,7 @@ include_once(G5_THEME_PATH.'/head_guide.php');
 <!--모달-->
 <script>
     $(".wrap").addClass("shop");
-    
+
 	function mdShow(mdName) {
 	  var $layer = $("#" + mdName);
 	  $layer.addClass("show");
@@ -388,8 +205,9 @@ include_once(G5_THEME_PATH.'/head_guide.php');
 	  $("#" + mdName).removeClass("show");
 	}
 </script>
+
 <!--shop 탭메뉴 고정-->
-	<script>
+	<!-- <script>
 		const content = document.querySelector('.shop_header');
 		const wing = document.querySelector('.shop_header');
 
@@ -403,7 +221,7 @@ window.addEventListener('scroll', function(){
     wing.classList.remove('fixed');
   }
 });
-	</script>
+	</script> -->
 	<!--드롭다운-->
 <script>
 	var checkdropdown = document.getElementsByClassName("open-btn-ckver");
