@@ -115,9 +115,9 @@ else
 // 분류 위치
 // HOME > 1단계 > 2단계 ... > 6단계 분류
 $ca_id = $it['ca_id'];
-// $nav_skin = $skin_dir.'/navigation.skin.php';
+$nav_skin = $skin_dir.'/navigation.skin.php';
 if(!is_file($nav_skin))
-    // $nav_skin = G5_SHOP_SKIN_PATH.'/navigation.skin.php';
+    $nav_skin = G5_SHOP_SKIN_PATH.'/navigation.skin.php';
 include $nav_skin;
 
 // if ($is_admin) {
