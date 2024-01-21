@@ -247,6 +247,8 @@ $naverpay_button_js = '';
 ?>
 
 <?php if($is_orderable) { ?>
+<script src="<?php echo G5_THEME_URL; ?>/js/jquery-3.4.1.js"></script>
+
 <script src="<?php echo G5_JS_URL; ?>/shop.js?ver=<?php echo G5_JS_VER; ?>"></script>
 <?php } ?>
 

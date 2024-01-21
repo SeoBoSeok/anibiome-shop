@@ -66,7 +66,7 @@
 						<div class="inner_menu">
 							<div class="list">
 								<a href="/page/shop_productlist.php">제품 리스트</a>
-                                <a href="/shop/item.php?it_id=1705576761">제품 상세 페이지</a>
+                                <!-- <a href="/shop/item.php?it_id=1705576761">제품 상세 페이지</a> -->
 							</div>
 						</div>
 					</li>

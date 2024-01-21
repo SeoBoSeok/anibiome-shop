@@ -500,6 +500,48 @@ function get_it_thumbnail($img, $width, $height=0, $id='', $is_crop=false)
 }
 
 
+// 상품이미지 썸네일 생성2
+function get_it_thumbnail2($img, $width=0, $height=0, $id='', $is_crop=false)
+{
+    $str = '';
+
+    if ( $replace_tag = run_replace('get_it_thumbnail_tag', $str, $img, $width, $height, $id, $is_crop) ){
+        return $replace_tag;
+    }
+
+    $file = G5_DATA_PATH.'/item/'.$img;
+    if(is_file($file))
+        $size = @getimagesize($file);
+
+    if (! (isset($size) && is_array($size))) 
+        return '';
+
+    if($size[2] < 1 || $size[2] > 3)
+        return '';
+
+    $img_width = $size[0];
+    $img_height = $size[1];
+    $filename = basename($file);
+    $filepath = dirname($file);
+
+    if($img_width && !$height) {
+        $height = round(($width * $img_height) / $img_width);
+    }
+
+    $thumb = thumbnail($filename, $filepath, $filepath, $width, $height, false, $is_crop, 'center', false, $um_value='80/0.5/3');
+
+    if($thumb) {
+        $file_url = str_replace(G5_PATH, G5_URL, $filepath.'/'.$thumb);
+        $str = '<img src="'.$file_url.'" width="'.$width.'" height="'.$height.'"';
+        if($id)
+            $str .= ' id="'.$id.'"';
+        $str .= ' alt="">';
+    }
+
+    return $file_url;
+}
+
+
 // 이미지 URL 을 얻는다.
 function get_it_imageurl($it_id)
 {
