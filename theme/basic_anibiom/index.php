@@ -397,35 +397,35 @@ include_once(G5_THEME_PATH.'/head.php');
                     <p>모두 선택해주세요.</p>
                     <ul class="checkBox_wrap">
                         <li>
-                            <input class="form-check-input" type="checkbox" value="1" id="check1" name="symptom">
+                            <input class="form-check-input" type="checkbox" value="1" id="check1" name="symptom[]">
                             <label for="check1">구토를 해요</label>
                         </li>
                         <li>
-                            <input class="form-check-input" type="checkbox" value="2" id="check2" name="symptom">
+                            <input class="form-check-input" type="checkbox" value="2" id="check2" name="symptom[]">
                             <label for="check2">설사를 해요</label>
                         </li>
                         <li>
-                            <input class="form-check-input" type="checkbox" value="3" id="check3" name="symptom">
+                            <input class="form-check-input" type="checkbox" value="3" id="check3" name="symptom[]">
                             <label for="check3">구취가 있어요</label>
                         </li>
                         <li>
-                            <input class="form-check-input" type="checkbox" value="4" id="check4" name="symptom">
+                            <input class="form-check-input" type="checkbox" value="4" id="check4" name="symptom[]">
                             <label for="check4">구내염이 있어요</label>
                         </li>
                         <li>
-                            <input class="form-check-input" type="checkbox" value="5" id="check5" name="symptom">
+                            <input class="form-check-input" type="checkbox" value="5" id="check5" name="symptom[]">
                             <label for="check5">비듬이 있어요</label>
                         </li>
                         <li>
-                            <input class="form-check-input" type="checkbox" value="6" id="check6" name="symptom">
+                            <input class="form-check-input" type="checkbox" value="6" id="check6" name="symptom[]">
                             <label for="check6">탈모가 있어요</label>
                         </li>
                         <li>
-                            <input class="form-check-input" type="checkbox" value="7" id="check7" name="symptom">
+                            <input class="form-check-input" type="checkbox" value="7" id="check7" name="symptom[]">
                             <label for="check7">비만 또는 저체중이에요</label>
                         </li>
                         <li>
-                            <input class="form-check-input" type="checkbox" value="8" id="check8" name="symptom">
+                            <input class="form-check-input" type="checkbox" value="8" id="check8" name="symptom[]">
                             <label for="check8">눈 상태가 안좋아요</label>
                         </li>
                     </ul>
@@ -611,35 +611,35 @@ include_once(G5_THEME_PATH.'/head.php');
                     <p>모두 선택해주세요.</p>
                     <ul class="checkBox_wrap">
                         <li>
-                            <input class="form-check-input" type="checkbox" value="1" id="check1_dog" name="symptom">
+                            <input class="form-check-input" type="checkbox" value="1" id="check1_dog" name="symptom[]">
                             <label for="check1_dog">구토를 해요</label>
                         </li>
                         <li>
-                            <input class="form-check-input" type="checkbox" value="2" id="check2_dog" name="symptom">
+                            <input class="form-check-input" type="checkbox" value="2" id="check2_dog" name="symptom[]">
                             <label for="check2_dog">설사를 해요</label>
                         </li>
                         <li>
-                            <input class="form-check-input" type="checkbox" value="3" id="check3_dog" name="symptom">
+                            <input class="form-check-input" type="checkbox" value="3" id="check3_dog" name="symptom[]">
                             <label for="check3_dog">구취가 있어요</label>
                         </li>
                         <li>
-                            <input class="form-check-input" type="checkbox" value="4" id="check4_dog" name="symptom">
+                            <input class="form-check-input" type="checkbox" value="4" id="check4_dog" name="symptom[]">
                             <label for="check4_dog">구내염이 있어요</label>
                         </li>
                         <li>
-                            <input class="form-check-input" type="checkbox" value="5" id="check5_dog" name="symptom">
+                            <input class="form-check-input" type="checkbox" value="5" id="check5_dog" name="symptom[]">
                             <label for="check5_dog">비듬이 있어요</label>
                         </li>
                         <li>
-                            <input class="form-check-input" type="checkbox" value="6" id="check6_dog" name="symptom">
+                            <input class="form-check-input" type="checkbox" value="6" id="check6_dog" name="symptom[]">
                             <label for="check6_dog">탈모가 있어요</label>
                         </li>
                         <li>
-                            <input class="form-check-input" type="checkbox" value="7" id="check7_dog" name="symptom">
+                            <input class="form-check-input" type="checkbox" value="7" id="check7_dog" name="symptom[]">
                             <label for="check7_dog">비만 또는 저체중이에요</label>
                         </li>
                         <li>
-                            <input class="form-check-input" type="checkbox" value="8" id="check8_dog" name="symptom">
+                            <input class="form-check-input" type="checkbox" value="8" id="check8_dog" name="symptom[]">
                             <label for="check8_dog">눈 상태가 안좋아요</label>
                         </li>
                     </ul>
