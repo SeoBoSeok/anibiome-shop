@@ -25,37 +25,45 @@ $age = $_POST["age"];
 $kg = $_POST["kg"];
 
 // 어떤 증상 (1~8)
-$symptom = $_POST["symptom"];
-$symptom_description = ""; // 증상에 대한 설명을 저장할 변수
-switch ($symptom) {
-    case 1:
-        $symptom_description = "구토를 해요";
-        break;
-    case 2:
-        $symptom_description = "설사를 해요";
-        break;
-    case 3:
-        $symptom_description = "구취가 있어요";
-        break;
-    case 4:
-        $symptom_description = "구내염이 있어요";
-        break;
-    case 5:
-        $symptom_description = "비듬이 있어요";
-        break;
-    case 6:
-        $symptom_description = "탈모가 있어요";
-        break;
-    case 7:
-        $symptom_description = "비만 또는 저체중이에요";
-        break;
-    case 8:
-        $symptom_description = "눈 상태가 안좋아요";
-        break;
-    default:
-        $symptom_description = "알 수 없는 증상입니다.";
-        break;
+$symptoms = "";
+$symptoms_string = "";
+if (!empty($_POST['symptom'])) {
+    $symptoms = $_POST['symptom'];
+
+    // 배열을 쉼표로 구분된 문자열로 변환
+    $symptoms_string = implode(', ', $symptoms);
 }
+
+// $symptom_description = ""; // 증상에 대한 설명을 저장할 변수
+// switch ($symptom) {
+//     case 1:
+//         $symptom_description = "구토를 해요";
+//         break;
+//     case 2:
+//         $symptom_description = "설사를 해요";
+//         break;
+//     case 3:
+//         $symptom_description = "구취가 있어요";
+//         break;
+//     case 4:
+//         $symptom_description = "구내염이 있어요";
+//         break;
+//     case 5:
+//         $symptom_description = "비듬이 있어요";
+//         break;
+//     case 6:
+//         $symptom_description = "탈모가 있어요";
+//         break;
+//     case 7:
+//         $symptom_description = "비만 또는 저체중이에요";
+//         break;
+//     case 8:
+//         $symptom_description = "눈 상태가 안좋아요";
+//         break;
+//     default:
+//         $symptom_description = "알 수 없는 증상입니다.";
+//         break;
+// }
 
 // 증상 정도 (1~5)
 $symptom_level = $_POST["symptom_level"];
@@ -63,6 +71,39 @@ $symptom_level = $_POST["symptom_level"];
 $poop_condition = $_POST["poop_condition"];
 // 마이크로바이옴 치료 보조제를 복용했던 경험 (y or n)
 $experience = $_POST["experience"];
+if ($experience == "n") {
+    $experience_data = 0;
+} else {
+    $experience_data = 1;
+}
+
+
+// 검사결과 저장
+$insert_sql = "
+    INSERT INTO animal_health_test (
+        animal_name, 
+        gender, 
+        age, 
+        weight, 
+        symptoms, 
+        symptom_severity, 
+        stool_condition, 
+        supplement_experience, 
+        entry_datetime
+    ) VALUES (
+        '$name', 
+        '$gender',
+        '$age',
+        '$kg',
+        '$symptoms_string', 
+        '$symptom_level', 
+        '$poop_condition',
+        $experience_data, 
+        NOW()
+    )
+";
+
+$result = sql_query($insert_sql);
 
 ?>
 
