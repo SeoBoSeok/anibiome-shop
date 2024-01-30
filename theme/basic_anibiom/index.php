@@ -375,11 +375,11 @@ include_once(G5_THEME_PATH.'/head.php');
                         </li>
                         <li>
                             <h3>나이</h3>
-                            <input class="form-control form-control-lg input_text" type="number" name="age" placeholder="나이를 입력하세요" aria-label="default input" id="age">
+                            <input class="form-control form-control-lg input_text" type="text" name="age" placeholder="나이를 입력하세요" aria-label="default input" id="age">
                         </li>
                         <li>
                             <h3>몸무게 (kg)</h3>
-                            <input class="form-control form-control-lg input_text" type="number" name="kg" placeholder="몸무게를 입력하세요." aria-label="default input" id="kg">
+                            <input class="form-control form-control-lg input_text" type="text" name="kg" placeholder="몸무게를 입력하세요." aria-label="default input" id="kg">
                         </li>
                     </ul>
                 </div>
@@ -589,11 +589,11 @@ include_once(G5_THEME_PATH.'/head.php');
                         </li>
                         <li>
                             <h3>나이</h3>
-                            <input class="form-control form-control-lg input_text" type="number" name="age" placeholder="나이를 입력하세요" aria-label="default input" id="age_dog">
+                            <input class="form-control form-control-lg input_text" type="text" name="age" placeholder="나이를 입력하세요" aria-label="default input" id="age_dog">
                         </li>
                         <li>
                             <h3>몸무게 (kg)</h3>
-                            <input class="form-control form-control-lg input_text" type="number" name="kg" placeholder="몸무게를 입력하세요." aria-label="default input" id="kg_dog">
+                            <input class="form-control form-control-lg input_text" type="text" name="kg" placeholder="몸무게를 입력하세요." aria-label="default input" id="kg_dog">
                         </li>
                     </ul>
                 </div>
