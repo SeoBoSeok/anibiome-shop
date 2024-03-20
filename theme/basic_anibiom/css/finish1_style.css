@@ -2398,6 +2398,7 @@ body {
 .scroller .inner p{
 	font-weight: bold;
 	color: #212121;
+	margin-bottom: 0;
 }
 .scroller .inner { 
 	animation: 10s normal infinite running scroll; 
