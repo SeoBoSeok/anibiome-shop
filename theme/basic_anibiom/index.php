@@ -25,7 +25,7 @@ include_once(G5_THEME_PATH.'/head.php');
                 <div class="scroller">
                     <div class="inner">
                         <p>건강</p>
-                        <p>오래</p>
+                        <p>편안</p>
                         <p>행복</p>
                     </div>
                 </div>
@@ -809,7 +809,7 @@ $(document).ready(function() {
         name.addEventListener('keyup', activeEvent);
         age.addEventListener('keyup', activeEvent);
         kg.addEventListener('keyup', activeEvent);
-        next_btn.addEventListener('click', errorEvent);
+        // next_btn.addEventListener('click', errorEvent);
         console.log(name);
         function activeEvent() {
         switch(!(name.value && age.value && kg.value)){
