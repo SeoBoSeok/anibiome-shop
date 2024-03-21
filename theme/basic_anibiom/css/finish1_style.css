@@ -3497,6 +3497,215 @@ padding: 50px 0;
 }
 .sound_only {display: none;}
 
+/* 추가 */
+.anibiome_contents_footer {
+	padding: 100px 0;
+	border-top: 1px solid #000;
+}
+.anibiome_contents_list {
+	padding: 18px 0;
+	border-bottom: 1px solid #E6E6EA;
+}
+.tt {font-size: 22px; padding-bottom: 20px; font-weight: 700;}
+.anibiome_contents_author, .anibiome_contents_subject, .anibiome_contents_content {
+	padding: 5px 0;
+}
+.anibiome_contents_author, .anibiome_contents_author span {
+	color: #BDBDBD;
+}
+.anibiome_contents_author span { margin-right: 20px }
+.anibiome_contents_subject {font-size: 18px; line-height: 27px;}
+.anibiome_contents_list:hover .anibiome_contents_subject {
+	color: #097EEA;
+}
+/*메인 콘텐츠*/
+.text-typing-any p {
+	animation: text-typing-any 1.5s steps(30, end);
+   white-space: nowrap;
+   overflow: hidden;
+   text-align:left;
+}
+.text-typing-any p:nth-child(2) {
+   animation-delay: 1.5s;
+   width:0;
+   animation-fill-mode: forwards;
+}
+.bg_line {
+   background: url("../images/bg_line.svg");
+   background-size:1366px;
+   background-position: center;
+   background-repeat: repeat-y;
+} 
+.sc_tit {
+   font-weight: 700;
+   font-size: 40px;
+   line-height: 150%;
+}
+.sc_tit .sc_sub {
+   font-weight: 400;
+   font-size: 24px;
+   color: #000;
+   margin-top:16px;
+   line-height: 140%;
+}
+.sc_tit_sub {
+   font-size:22px;
+   margin-top:12px;
+   display: block;
+   color:#757575;
+   font-weight: 400;
+}
+.main .main_visual {
+   height: 100vh;
+   width:100%;
+   background: url("../images/main_visual_bg.png");
+   background-position: center;
+   position: relative;
+   background-size:cover;
+   background-repeat: no-repeat;
+}
+.main .main_visual .txt_group {
+   position: absolute;
+   bottom:80px;
+   z-index: 2;
+}
+.main .container {
+   position: relative;
+   width: 60px;
+   height: 60px;
+   display: flex;
+   justify-content: center;
+   border: 1px solid #FFFFFF;
+   border-radius: 99px;
+   padding-top: 4px;
+}
+.main .arrow {
+ position: absolute;
+ width: 20px;
+ height: 4px;
+ opacity: 0;
+ transform: scale3d(0.5, 0.5, 0.5);
+ animation: move 2s ease-out infinite;
+}
+.main .arrow:first-child {
+ animation: move 2s ease-out 1s infinite;
+}
+.main .arrow:nth-child(2) {
+ animation: move 2s ease-out 1s infinite;
+}
+.main .arrow:before,
+.main .arrow:after {
+ content: ' ';
+ position: absolute;
+ top: 0;
+ height: 100%;
+ width: 50%;
+ background: #ffffff;
+}
+.main .arrow:before {
+ left: 0;
+ transform: skew(0deg, 42deg);
+}
+.main .arrow:after {
+ right: 0;
+ width: 50%;
+ transform: skew(0deg, -42deg);
+}
+.main .main_visual .text {
+   color: #FFFFFF;
+   font-weight: 600;
+   font-size: 80px;
+   line-height: 130%;
+   margin-bottom: 60px;
+}
+.main .any_move_item .item01 {
+   position: absolute;
+   width:340px;
+   left:30%;
+   top:30%;
+   animation: top_cyc_Y 10s linear infinite;
+}
+.main .any_move_item .item02 {
+   position: absolute;
+   width:420px;
+   left:-10%;
+   top:-30%;
+   animation: top_cyc_X 20s linear infinite;
+}
+.eldercare .any_move_item .item012 {
+   position: absolute;
+   width:340px;
+   left:28%;
+   top:45%;
+   animation: top_cyc_Y 10s linear infinite;
+}
+.main .product_3-step {
+   padding:120px 0;
+}
+.main .product_3-step ul {
+   display: flex;
+   margin-top:60px;
+   width:100%;
+   justify-content: space-between;
+}
+.main .product_3-step ul li {
+   width: 370px;
+   text-align: center;
+   background: #F6F7F9;
+   border-radius: 8px;
+   padding:40px 0;
+}
+.main .product_3-step ul.four li {
+   width: 100%;
+   text-align: center;
+   background: #F6F7F9;
+   border-radius: 8px;
+   padding:40px 20px;
+   margin: 0 10px;
+}
+.main .product_3-step ul.four li ol {
+   padding-left: 20px;
+}
+.main .product_3-step ul.four li ol li {
+   padding: 0;
+   list-style: circle;
+   text-align: left;
+   font-size: 16px;
+}
+.main .product_3-step ul:not(.four) li:nth-child(3) {
+   margin-right:0px;
+}
+.main .product_3-step ul.four li:nth-child(3) {
+   /* margin-right:20px; */
+}
+.main .product_3-step .step {
+   background: var(--color-darkmain);
+   border-radius: 99px;
+   font-weight: 600;
+   font-size: 18px;
+   color: #FFFFFF;
+   padding:8px 16px;
+}
+.main .product_3-step .text {
+   font-weight: 400;
+   font-size: 18px;
+   color: #212121;
+}
+.main .product_3-step .img {
+   height:150px;
+   margin:24px 0;
+}
+.main .product_3-step .img.four {
+   height: auto;
+}
+.main .product_3-step .img.four img {
+   width: 80px;
+}
+.main .product_3-step .img img {
+   height:100%;
+   width: auto;
+}
+
 /* ========== 미디어쿼리 타블렛========== */
 @media (max-width: 1300px) {
 	.pc_none {
