@@ -99,6 +99,8 @@ if(is_file($skin_file)) {
     echo '<p>'.str_replace(G5_PATH.'/', '', $skin_file).'이 존재하지 않습니다.</p>';
 }
 
+include_once(G5_THEME_PATH.'/footer.php');
+
 if ($co['co_include_tail'] && is_include_path_check($co['co_include_tail']))
     @include_once($co['co_include_tail']);
 else

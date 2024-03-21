@@ -6,7 +6,6 @@ add_stylesheet('<link rel="stylesheet" href="'.$content_skin_url.'/style.css">',
 ?>
 
 <div class="wrap">
-    <?php include_once(G5_THEME_PATH.'/menu.php'); ?>
     <div class="content_wrap sub">
 		<section class="sub_visual">
 			<div class="sub_top_bg"><img src="/assets/images/sub_top_bg.png"></div>

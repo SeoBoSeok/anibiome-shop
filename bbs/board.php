@@ -234,4 +234,6 @@ include_once(G5_BBS_PATH.'/board_tail.php');
 
 echo "\n<!-- 사용스킨 : ".(G5_IS_MOBILE ? $board['bo_mobile_skin'] : $board['bo_skin'])." -->\n";
 
+include_once(G5_THEME_PATH.'/footer.php');
+
 include_once(G5_PATH.'/tail.sub.php');

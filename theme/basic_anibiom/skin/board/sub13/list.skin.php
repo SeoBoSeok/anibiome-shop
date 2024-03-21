@@ -12,7 +12,6 @@ if ($is_nogood) $colspan++;
 add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0);
 ?>
 <div class="wrap">
-    <?php include_once(G5_THEME_PATH.'/menu.php'); ?>
     <div class="content_wrap sub veterinary">
 		<section class="sub_visual">
 			<div class="sub_top_bg"><img src="/assets/images/sub_top_bg.png"></div>
