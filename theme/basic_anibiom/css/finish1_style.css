@@ -3913,6 +3913,9 @@ padding: 50px 0;
 		transform: rotate(180deg);
 		transition-duration:0.2s;
 	}
+	.modal.hamburger .gnb_menu .open-btn-ckver.active + .detail_menu {
+		display: block;
+	}
 	.modal.hamburger .gnb_menu .detail_menu > a {
 		display: block;
 		width: 100%;
