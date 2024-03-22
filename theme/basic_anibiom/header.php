@@ -57,7 +57,7 @@
                                 <a href="/bbs/board.php?bo_table=research">연구자료실</a>
                                 <a href="/page/fmt.php">분변이실(FMT)</a>
                                 <a href="/page/donor_screening.php">분변기증자 선별</a>
-                                <a href="/page/donor_screening.php">전문치료 프로그램</a>
+                                <!-- <a href="/page/donor_screening.php">전문치료 프로그램</a> -->
 							</div>
 						</div>
 					</li>
