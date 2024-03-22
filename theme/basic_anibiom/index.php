@@ -36,7 +36,7 @@ include_once(G5_THEME_PATH.'/head.php');
                 수의학 최고 전문가들이 모여 동물의 질병 치료의<br/>
                 혁신적인 솔루션을 연구하고 개발했습니다.
             </p>
-            <button class="round_btn">자세히보기<img src="<?php echo G5_THEME_DIR.'/basic_anibiom/'; ?>images/main/icon/chevron-right.svg"></button>
+            <a href="/bbs/content.php?co_id=sub51" target="_blank"><button class="round_btn">자세히보기<img src="<?php echo G5_THEME_DIR.'/basic_anibiom/'; ?>images/main/icon/chevron-right.svg"></button></a>
         </div>
     </div>
     <div class="main_sec2">
@@ -123,7 +123,7 @@ include_once(G5_THEME_PATH.'/head.php');
                             </h5>
                         </li>
                     </ul>
-                    <button class="round_btn">제품 보기<img src="<?php echo G5_THEME_DIR.'/basic_anibiom/'; ?>images/main/icon/chevron-right.svg"></button>
+                    <a href="/page/shop_productlist.php"><button class="round_btn">제품 보기<img src="<?php echo G5_THEME_DIR.'/basic_anibiom/'; ?>images/main/icon/chevron-right.svg"></button></a>
                 </div>
                 <div class="product_img">
                     <img src="<?php echo G5_THEME_DIR.'/basic_anibiom/'; ?>images/main/product.png" alt="제품 사진" width="100%"/>

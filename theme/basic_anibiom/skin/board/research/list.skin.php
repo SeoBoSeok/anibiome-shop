@@ -19,7 +19,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
 				<p class="al_center">연구자료실</p>
 			</div>
 			<div class="page_navi box_width">
-				<a href="index.html" class="home">홈</a>
+				<a href="/" class="home">홈</a>
 				<div class="dropdown_set">
 					<div class="dropdown">
 						<div class="dropbtn open-btn-ckver">회사소개</div>
@@ -46,7 +46,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
 	</div>
 </div>
 <!-- 게시판 목록 시작 { -->
-<div id="bo_list" style="width:<?php echo $width; ?>; display: none;">
+<div id="bo_list" style="width:<?php echo $width; ?>;">
 
     <!-- 게시판 카테고리 시작 { -->
     <?php if ($is_category) { ?>
