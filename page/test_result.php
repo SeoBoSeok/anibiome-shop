@@ -214,7 +214,7 @@ $result = sql_query($insert_sql);
                         <div class="right_content">
                             <h4>150,000원</h4>
                         </div>
-                        <button class="product_btn" onClick="location.href='/shop/item.php?it_id=1705576761'">자세히보기</button>
+                        <button class="product_btn" onClick="location.href='/shop/item.php?it_id=1694735675'">자세히보기</button>
                         <h5>
                             음수량이 적은 고양이들에게 추천합니다.
                         </h5>
