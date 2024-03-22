@@ -70,7 +70,6 @@ add_stylesheet('<link rel="stylesheet" href="'.$content_skin_url.'/style.css">',
 	}); 
 </script>
 <div class="wrap">
-    <?php include_once(G5_THEME_PATH.'/menu.php'); ?>
     <div class="content_wrap sub">
 		<section class="sub_visual">
 			<div class="sub_top_bg"><img src="/assets/images/sub_top_bg.png"></div>
@@ -111,7 +110,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$content_skin_url.'/style.css">',
 							여기에서 시작됩니다.</h2>
 							<p>애니바이옴헬스케어의 검사, 보충제 및 유지관리 제품들이 어떻게 당신의 고양이들을<br/>
 								도와줄 수 있는지 확인하십시오!</p>
-								<a href="">쇼핑몰 이동</a>
+								<a href="/page/shop_productlist.php">쇼핑몰 이동</a>
 							</div>
 				</div>
 			</div>
@@ -271,7 +270,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$content_skin_url.'/style.css">',
 							</div>
 							<h1>구취는 고양이의 구강 및 장 건강과<br/>
 								어떤 관련이 있습니까?</h1>
-								<a href="">구취 제품 쇼핑하기</a>
+								<a href="/page/shop_productlist.php">구취 제품 쇼핑하기</a>
 						</div>
 						<div class="inner_img">
 							<img src="/assets/images/biomeDog/biome_cat_banner2.png" alt="구취강아지 이미지" />
@@ -377,7 +376,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$content_skin_url.'/style.css">',
 							</div>
 							<h1>설사는 고양이의 장 건강과<br/>
 								어떤 관련이 있습니까?</h1>
-								<a href="">설사 제품 쇼핑하기</a>
+								<a href="/page/shop_productlist.php">설사 제품 쇼핑하기</a>
 						</div>
 						<div class="inner_img">
 							<img src="/assets/images/biomeDog/biome_cat_banner22.png" alt="구취강아지 이미지" />
@@ -480,7 +479,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$content_skin_url.'/style.css">',
 							</div>
 							<h1>소화 문제가 고양이의 장 건강과<br/>
 								어떤 관련이 있습니까?</h1>
-								<a href="">장건강 제품 쇼핑하기</a>
+								<a href="/page/shop_productlist.php">장건강 제품 쇼핑하기</a>
 						</div>
 						<div class="inner_img">
 							<img src="/assets/images/biomeDog/biome_cat_banner23.png" alt="구취강아지 이미지" />
@@ -585,7 +584,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$content_skin_url.'/style.css">',
 							</div>
 							<h1>헤어볼은 고양이의 장 건강과<br/>
 								어떤 관련이 있습니까?</h1>
-								<a href="">헤어볼 치료제 제품 쇼핑하기</a>
+								<a href="/page/shop_productlist.php">헤어볼 치료제 제품 쇼핑하기</a>
 						</div>
 						<div class="inner_img">
 							<img src="/assets/images/biomeDog/biome_cat_banner24.png" alt="구취강아지 이미지" />
@@ -693,7 +692,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$content_skin_url.'/style.css">',
 							<h1>구강 건강이<br/>
 							고양이의 장 및 전반적인 건강과<br/>
 							어떤 관련이 있습니까?</h1>
-							<a href="">구강 및 장건강 제품 쇼핑하기</a>
+							<a href="/page/shop_productlist.php">구강 및 장건강 제품 쇼핑하기</a>
 						</div>
 						<div class="inner_img">
 							<img src="/assets/images/biomeDog/biome_cat_banner25.png" alt="구취강아지 이미지" />
@@ -800,7 +799,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$content_skin_url.'/style.css">',
 							</div>
 							<h1>피부와 털 상태가 고양이의 장 건강과<br/>
 								어떤 관련이 있습니까?</h1>
-								<a href="">스킨 및 코트 제품 쇼핑하기</a>
+								<a href="/page/shop_productlist.php">스킨 및 코트 제품 쇼핑하기</a>
 						</div>
 						<div class="inner_img">
 							<img src="/assets/images/biomeDog/biome_cat_banner26.png" alt="구취강아지 이미지" />
