@@ -39,7 +39,7 @@ include_once(G5_THEME_PATH.'/head.php');
     <section class="global_network">
         <div class="section_padding box_width founder_box">
             <div class="founder_img">
-                <img src="/images/member_owonseok2.png" alt="대표이미지" width="100%">
+                <img src="/assets/images/member_owonseok2.png" alt="대표이미지" width="100%">
             </div>
             <div class="founder_info">
                 <h3>글로벌 네트워크 (내과/임상영양학 분야)</h3>
@@ -72,28 +72,28 @@ include_once(G5_THEME_PATH.'/head.php');
         </div>
         <div class="company_logo_wrap  box_width">
             <div class="company_logo">
-                <img src="/images/network/acvim.png" alt="acvim로고" />
+                <img src="/assets/images/network/acvim.png" alt="acvim로고" />
             </div>
             <div class="company_logo">
-                <img src="/images/network/amaricancollage.png" alt="amaricancollage로고" />
+                <img src="/assets/images/network/amaricancollage.png" alt="amaricancollage로고" />
             </div>
             <div class="company_logo">
-                <img src="/images/network/ucdavis.png" alt="ucdavis로고" />
+                <img src="/assets/images/network/ucdavis.png" alt="ucdavis로고" />
             </div>
             <div class="company_logo">
-                <img src="/images/network/cusine.png" alt="cusine로고" />
+                <img src="/assets/images/network/cusine.png" alt="cusine로고" />
             </div>
             <div class="company_logo">
-                <img src="/images/network/esvcn.png" alt="esvcn로고" />
+                <img src="/assets/images/network/esvcn.png" alt="esvcn로고" />
             </div>
             <div class="company_logo">
-                <img src="/images/network/royalcanin.png" alt="royalcanin로고" />
+                <img src="/assets/images/network/royalcanin.png" alt="royalcanin로고" />
             </div>
             <div class="company_logo">
-                <img src="/images/network/purina.png" alt="purina로고" />
+                <img src="/assets/images/network/purina.png" alt="purina로고" />
             </div>
             <div class="company_logo">
-                <img src="/images/network/hills.png" alt="hills로고" />
+                <img src="/assets/images/network/hills.png" alt="hills로고" />
             </div>
         </div>
         <div class="global_network_member">
@@ -103,7 +103,7 @@ include_once(G5_THEME_PATH.'/head.php');
             <div class="content box_width">
                 <div class="member_box">
                     <div class="member_img">
-                        <img src="/images/member_choseongbeom.png" alt="조성범교수"/>
+                        <img src="/assets/images/member_choseongbeom.png" alt="조성범교수"/>
                     </div>
                     <div class="member_info">
                         <h2>서울대학교 수의통합의학연구센터</h2>
