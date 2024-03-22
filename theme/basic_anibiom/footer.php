@@ -80,6 +80,10 @@ $(function(){
     $(".gnb_close_btn, #gnb_all_bg").click(function(){
         $("#gnb_all, #gnb_all_bg").hide();
     });
+    AOS.init({
+        easing: 'ease-out-back',
+        duration: 1000
+    });
 });
 function mdShow(mdName) {
     var $layer = $("#" + mdName);
