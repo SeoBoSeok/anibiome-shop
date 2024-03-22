@@ -155,7 +155,7 @@ include_once(G5_THEME_PATH.'/head.php');
                             장내 마이크로바이옴의 균형이<br/>
                             건강의 핵심이라는 것을 알게되었습니다.
                         </p>
-                        <a href="" class="line_btn">
+                        <a href="/bbs/board.php?bo_table=research" target="_blank" class="line_btn">
                             <img src="<?php echo G5_THEME_DIR.'/basic_anibiom/'; ?>images/main/icon/page-2.svg" />
                             애니바이옴 연구자료
                         </a>

@@ -239,7 +239,7 @@ var kakao_javascript_apikey = "<?php echo $config['cf_kakao_js_apikey']; ?>";
                     </a>
                 </li>
                 <li>
-                    <a href="javascript:;">
+                    <a href="/bbs/board.php?bo_table=research">
                         연구자료실
                     </a>
                 </li>
