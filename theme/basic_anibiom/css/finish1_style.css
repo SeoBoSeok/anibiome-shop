@@ -1765,6 +1765,7 @@ font-size: 18px;
 	width: 650px;
 	margin-bottom: 50px;
 	flex-wrap: wrap;
+	padding-left: 0;
 }
 .biome_dog_sub .biome_dog_icon_list .biome_icon{
 	margin-right: 24px;
