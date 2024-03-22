@@ -3705,6 +3705,7 @@ padding: 50px 0;
    height:100%;
    width: auto;
 }
+.ctt_admin {display: none;}
 
 /* ========== 미디어쿼리 타블렛========== */
 @media (max-width: 1300px) {
